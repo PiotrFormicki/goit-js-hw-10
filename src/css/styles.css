@@ -92,6 +92,7 @@ span {
   font-weight: 700;
 }
 #container {
+  margin-left: 300px;
   margin-top: 350px;
   position: absolute;
   margin: auto;
@@ -106,6 +107,7 @@ span {
 #text1,
 #text2 {
   margin-top: 350px;
+  margin-left: 300px;
   position: absolute;
   width: 100%;
   display: inline-block;
