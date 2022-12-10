@@ -29,7 +29,7 @@ const getGivenCountry = ({ name, capital, population, flags, languages }) => {
    </a>`;
 };
 
-function drawCountryBlock(countries) {
+function createListOfExistingCountries(countries) {
   const countriesArray = countries.map(({ name, flags }) => {
     const countryBlock = document.createElement('div');
     countryBlock.classList.add('card');
@@ -67,7 +67,7 @@ const inputEvent = () => {
           if (countries.length === 1) {
             return getGivenCountry(countries[0]);
           }
-          return drawCountryBlock(countries);
+          return createListOfExistingCountries(countries);
         })
         .catch(() => {
           countriesData.innerHTML = '';
