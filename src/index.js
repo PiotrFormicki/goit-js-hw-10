@@ -9,9 +9,17 @@ const countriesData = document.querySelector('.country-info');
 const DEBOUNCE_DELAY = 300;
 
 const getGivenCountry = ({ name, capital, population, flags, languages }) => {
+ let specificLanguage;
+  
+
   const countriesLanguages = languages
     .map(language => language.name)
     .join(', ');
+    if (languages.length > 1) { 
+      specificLanguage=`Languages`
+    }else { 
+      specificLanguage=`Language`
+    }
   countriesData.innerHTML = '';
   countriesResult.innerHTML = '';
   countriesData.innerHTML = `<div class = "country-info__box">
@@ -21,11 +29,9 @@ const getGivenCountry = ({ name, capital, population, flags, languages }) => {
   </div>
   <a>
   <p class ="country-capital">
-  Capital: ${capital}</span> </p>
-  <a class ="country-info__link">
+  Capital: ${capital === undefined ? '-' : capital} </p>
   <p>Population: ${population} </p>
-   </a><a>
-   <p>Languages: ${countriesLanguages}</p> 
+   <p>${specificLanguage}: ${countriesLanguages}</p> 
    </a>`;
 };
 
@@ -80,6 +86,6 @@ const inputEvent = () => {
   }
 };
 function textLimitter(str) {
-  return /^[a-zA-Z\s ]+$/.test(str);
+  return /^[A-Za-z\s\-]*$/.test(str);
 }
 inputText.addEventListener('input', debounce(inputEvent, DEBOUNCE_DELAY));
