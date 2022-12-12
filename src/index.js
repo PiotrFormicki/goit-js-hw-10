@@ -9,17 +9,15 @@ const countriesData = document.querySelector('.country-info');
 const DEBOUNCE_DELAY = 300;
 
 const getGivenCountry = ({ name, capital, population, flags, languages }) => {
- let specificLanguage;
-  
+  let specificLanguage;
 
   const countriesLanguages = languages
     .map(language => language.name)
     .join(', ');
-    if (languages.length > 1) { 
-      specificLanguage=`Languages`
-    }else { 
-      specificLanguage=`Language`
-    }
+  languages.length > 1
+    ? (specificLanguage = `Languages`)
+    : (specificLanguage = `Language`);
+
   countriesData.innerHTML = '';
   countriesResult.innerHTML = '';
   countriesData.innerHTML = `<div class = "country-info__box">
